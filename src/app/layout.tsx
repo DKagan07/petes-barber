@@ -2,11 +2,17 @@ import type { Metadata } from "next";
 import "./globals.css";
 import TopBar from "../../utils/topbar";
 import { getImageProps } from "next/image";
+import { Noto_Serif } from 'next/font/google';
 
 export const metadata: Metadata = {
     title: "Peter's Barbershop",
     description: "Peter's Barbershop",
 };
+
+const roboto = Noto_Serif({
+    weight: '400',
+    // subsets: ['latin']
+})
 
 function getBackgroundImage(srcSet = '') {
     const imageSet = srcSet
@@ -41,7 +47,7 @@ export default function RootLayout({
 
     return (
         <html lang="en">
-            <body style={style}>
+            <body className={roboto.className} style={style}>
                 <TopBar />
                 {children}
             </body>
